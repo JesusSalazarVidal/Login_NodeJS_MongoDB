@@ -1,20 +1,23 @@
 <%- layout('layouts/main')%>
 
-<div class="row">
+<div class="row row-cols-1 row-cols-md-3 g-4">
     <% products.forEach(products => { %>
         
 
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title d-flex justify-content-between align-items-center">
-            <%=products.nombre%>  <a href="/renderProduct/<%=products._id%>"><i class="fas fa-edit"></i></a>
-          </h4>
+    <div class="col">
+      <div class="card text-center">
+        <div class="card text-dark bg-info">
+          <h1 class="card-title align-items-center">
+            <%= products.nombre%>  
+          </h1>
+          <h2>$<%=  products.precio%> </h2>
           <p><%=products.descripcion%> </p>
           <!-- DELETE REQUEST -->
-          <form action="/deleteProduct/<%=products._id%>" method="POST">
+        
+          <form class="row-sm text-center" action="/deleteProduct/<%=products._id%>" method="POST">
             <input type="hidden" name="_method" value="DELETE">
-            <button type="submit" class="btn btn-danger btn-block btn-sm">Delete</button>
+            <button type="submit" class="btn btn-danger  btn-lg">Eliminar</button>
+            <a href="/renderProduct/<%=products._id%>" class="btn btn-secondary btn-lg " role="button" >Actualizar</a>
           </form>
         </div>
       </div>
